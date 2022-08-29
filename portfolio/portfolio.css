@@ -325,14 +325,32 @@ p {
     align-items: center;
     flex-direction: column;
 }
+.services .content .serviceBox:hover {
+    background-color: #d1d1e0;
+    transform: scale(1.07);
+    transition: transform 0.8s;
+ 
+}
 .dark .services .content .serviceBox:hover {
     background-color: #2196f3;
     transform: scale(1.07);
     transition: transform 0.8s;
  
 }
+.serviceBox p a {
+    text-decoration: none;
+letter-spacing: 2px;
+color: black;
+
+}
+.dark .serviceBox p a {
+    text-decoration: none;
+letter-spacing: 2px;
+color: white;
+
+}
 .services .content .serviceBox img {
-    max-width: 50px;
+    max-width: 200px;
 
 }
 .dark .services .content .serviceBox img {
@@ -354,9 +372,13 @@ p {
    color: var(--black);
     
 }
-.services .content .serviceBox p {
-    text-align: center;
+.services .content .serviceBox  li  {
+    text-align: left;
+    /* background-color: red; */
+    font-weight: bold;
+    text-align: left;
     text-transform: none;
+    letter-spacing: 0.5px;
 
 }
 .project .content {
