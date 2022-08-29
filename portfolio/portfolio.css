@@ -19,6 +19,14 @@ html {
     --white2:#fff;
 
 }
+.dark {
+    --black:#fff;
+    --black2:#444;
+    --white:#333;
+    --white2:#444;
+    transition: red 2s;
+
+}
 body {
     overflow-x: hidden;
 }
@@ -33,6 +41,11 @@ body {
     align-items: center;
     overflow: hidden;
     transition: width 0.5s;
+}
+.dark .navigation {
+    border-right: 1px solid rgba(0,0,0, 0.5);
+
+
 }
 .navigation.active {
     width: 0px;
@@ -62,9 +75,13 @@ font-weight: 500;
 letter-spacing: 2px;
 opacity: 0.5;
 }
+
 .navigation ul li a:hover {
     opacity: 1;
+    transform: scale(1.3);
+    transition: transform 0.8s;
 }
+
 .main {
     position: absolute;
     background-color: var(--white);
@@ -79,7 +96,7 @@ opacity: 0.5;
     left: 0px;
 }
 .main .topbar {
-    background-color: white;
+    background-color: var(--white);
     position: fixed;
     top: 0;
     width: calc( 100% - 300px);
@@ -92,6 +109,11 @@ opacity: 0.5;
     align-items: center;
     z-index: 10000;
     transition: width 0.5s,left 0.5s;
+
+}
+.dark .main .topbar {
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+
 
 }
 .main .topbar.active {
@@ -162,10 +184,13 @@ h3 {
 p {
     color: #777;
     text-transform: uppercase;
-
-
+}
+.dark p {
+    color: white;
+    text-transform: uppercase;
 
 }
+
 .btn {
     position: relative;
     display: inline-block;
@@ -177,6 +202,9 @@ p {
     margin-top: 10px;
     text-decoration: none;
     text-transform: capitalize;
+}
+.dark .btn:hover {
+    background-color: #2196f3;
 }
 .mainWensite {
     /* background-color: red; */
@@ -191,7 +219,9 @@ p {
     list-style: none;
 }
 .socialMedia li a {
-    background-color: rgba(0,0,0, 0.05);
+    /* background-color: rgba(0,0,0, 0.05); */
+    color: #2fa1ff;
+    /* background-color: black; */
     width: 40px;
     height: 40px;
     margin: 5px;
@@ -203,13 +233,32 @@ p {
     font-size: 1.2em;
     
 }
+
+
 .socialMedia li a:hover {
+    border-radius: 50px;
     background-color: var(--white2);
     color: #0040ff;
-    transform: scale(1.5);
-    transition: transform 0.3s;
+    transform: scale(2);
+    transition: 0.5s;
 
 }
+.dark .socialMedia li a {
+    color:white;
+    /* background-color: #2196f3; */
+
+}
+.dark .socialMedia li a:hover {
+    color: #2196f3;
+    background-color: white;
+    border-radius: 99%;
+
+
+
+}
+/* .dark h2 {
+    color: white;
+} */
 .adjust {
     width: 100%;
     position: relative;
@@ -276,8 +325,18 @@ p {
     align-items: center;
     flex-direction: column;
 }
+.dark .services .content .serviceBox:hover {
+    background-color: #2196f3;
+    transform: scale(1.07);
+    transition: transform 0.8s;
+ 
+}
 .services .content .serviceBox img {
     max-width: 50px;
+
+}
+.dark .services .content .serviceBox img {
+    filter: invert(1)
 
 }
 .services .content .serviceBox h2 {
@@ -289,6 +348,10 @@ p {
     text-align: center;
     letter-spacing: 2px;
     text-transform: uppercase;
+    
+}
+.dark .services .content .serviceBox h2 {
+   color: var(--black);
     
 }
 .services .content .serviceBox p {
@@ -343,6 +406,9 @@ p {
     transform: translateY(100%);
     transition: 0.5s ease-in-out;
 }
+.dark .project .content .workBx .textBx {
+    background-color: #444;
+}
 .project .content .workBx:hover .textBx  {
     transform: translateY(0);
 
@@ -366,6 +432,10 @@ p {
     border:1px solid rgba(0,0,0, 0.05);
     box-shadow: 0 5px 15px rgba(0,0,0, 0.05);
     padding: 20px;
+
+}
+.dark .testimonials .content .testimonialsBox:hover{
+   background-color: #2196f3
 
 }
 .testimonials .content .testimonialsBox .imgBx{
@@ -399,6 +469,9 @@ p {
     border-right:4px solid var(--black) ;
     padding-right: 10px;
 }
+.dark .testimonials .content .testimonialsBox h4 {
+    color: white;
+}
 .testimonials .content .testimonialsBox h4 span {
     text-transform: capitalize;
     color: #aaa;
@@ -406,6 +479,9 @@ p {
     font-weight: 300;
     font-size: 0.7em;
 
+}
+.dark .testimonials .content .testimonialsBox h4 span {
+    color :white;
 }
 .contact {
     display: flex;
@@ -451,6 +527,7 @@ p {
 
 
 }
+
 .contact .contactForm .row2 textarea {
     resize: none;
     height: 200px;
@@ -469,6 +546,69 @@ p {
     border: none;
 
 }
+.dark .contact .contactForm .row2 input[type="submit"] {
+    background-color: var(--black2);
+    color: white;
+    padding: 10px 30px ;
+    display: inline-block;
+    font-weight: 500;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    max-width: 150px;
+    border: none;
+
+}
+.dark .contact .contactForm .row2 input[type="submit"]:hover {
+background-color: #2196f3;
+
+}
+.themeSwitch {
+    left:40px;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    bottom: 20px;
+    background-color: var(--black);
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    color: var(--white2);
+}
+.themeSwitch::before {
+    content: '\f186';
+    font-family: fontAwesome;
+}
+.dark .themeSwitch::before {
+    content: '\f185';
+    font-family: fontAwesome;
+}
+.themeSwitch::after {
+    position: absolute;
+    left: 40px;
+    font-size: 0.7em;
+    color: var(--black);
+    content: 'Dark Mode';
+    font-family: fontAwesome;
+    white-space: nowrap;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+.dark .themeSwitch::after {
+    position: absolute;
+    left: 40px;
+    font-size: 0.7em;
+    color: var(--black);
+    content: 'Light Mode';
+    font-family: fontAwesome;
+    white-space: nowrap;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
 @media (max-width:992px) {
     .navigation {
         left: -100%;
@@ -506,6 +646,7 @@ p {
         padding-top: 80px;
     }
     .about .content {
+        display: flex;
         flex-direction: column;
     }
     .about .content .imgBx {
@@ -525,6 +666,7 @@ p {
     }
 }
 @media (max-width:767px) {
+   
     .services .content {
         
         grid-template-columns: repeat(1,1fr);

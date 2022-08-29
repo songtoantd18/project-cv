@@ -22,8 +22,8 @@
                 <li><a href="#project" onclick ="toggleMenu()">project</a></li>
                 <li><a href="#testimonials"onclick ="toggleMenu()">testimonials</a></li>
                 <li><a href="#contact"onclick ="toggleMenu()">contact</a></li>
-
             </ul>
+            <div class="themeSwitch"></div>
         </div>
         <div class="main">
             <div class="topbar">
@@ -327,6 +327,10 @@
         let topbar = document.querySelector('.topbar');
         let navigation = document.querySelector('.navigation');
         let main = document.querySelector('.main');
+        let themeSwitch = document.querySelector('.themeSwitch');
+        let body = document.querySelector('body');
+
+
 
         toggle.onclick = function () {
             toggle.classList.toggle('active')
@@ -343,6 +347,10 @@
         main.classList.remove('active')
 
             
+        }
+        themeSwitch.onclick = function(){
+            console.log('1:',1);
+            body.classList.toggle('dark')
         }
 
 
