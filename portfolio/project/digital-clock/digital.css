@@ -89,13 +89,15 @@ body {
     border-radius: 50%;
     box-shadow: 0 0 20px var(--clr), 0 0 60px var(--clr);
 }
-.mainWensite {
-
-    margin: 20px 0 ;
+.backarrow {
     color: white;
-    text-decoration: none;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
-.fa-arrow-left {
-    color: red;
-    background-color: red;
+.nextarrow {
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
 }

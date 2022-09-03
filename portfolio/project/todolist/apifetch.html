@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./apifetch.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>task list 2021</h1>
+
+
+        <ul id="list-course"></ul>
+        <div class="details">
+            <div>
+                <label>content</label>
+
+                <input type="text" name="name" required>
+            </div>
+            <div>
+                <!-- <label>date</label> -->
+                <input type="date" name="dateTime" required>
+            </div>
+            <div>
+                <button id="create"> <i class="fa-solid fa-plus"></i></button>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <script>
+        // var cousesApi = 'http://localhost:3000/studentList'
+        var cousesApi = 'https://62fbae6be4bcaf53518af2ed.mockapi.io/api/list-courses'
+
+        function handleCreateForm() {
+
+
+
+            var name = document.querySelector('input[name="name"]').value;
+            var dateTime = document.querySelector('input[name="dateTime"]').value;
+            console.log('name:', name);
+            console.log('dateTime:', dateTime);
+
+          
+
+
+
+            var formData = {
+                name: name,
+                dateTime: dateTime
+            }
+            createCourse(formData)
+
+        }
+        function createCourse(formData, callback) {
+            getCourses(renderCourses)
+            var option = {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            };
+            fetch(cousesApi, option)
+                .then(function (response) {
+                    response.json()
+                })
+                .then(callback)
+        }
+        // start()
+        function start() {
+            console.log('111:', 111);
+            getCourses(renderCourses)
+
+
+
+            handleCreateForm()
+
+
+
+        };
+        // start ();
+        //function
+        // callback dday la gi
+        function getCourses(callback) {
+            console.log('1:', 1);
+            fetch(cousesApi)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(callback);
+
+        }
+        function handleDeleteCourse(id) {
+            //xoá ở data base
+            var option = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+
+                },
+            };
+            fetch(cousesApi + '/' + id, option)
+                .then(function (response) {
+                    response.json()
+
+                })
+                .then(function () {
+                    // getCourses(renderCourses)
+                })
+            //xoá ở giao diện
+            var courseItem = document.querySelector('.course-item-' + id)
+            if (courseItem) {
+                courseItem.remove()
+            }
+
+        }
+
+
+        function renderCourses(courses) {
+            var listCoursesBlock = document.querySelector('#list-course');
+            var htmls = courses.map(function (course) {
+                return `
+            <li class="course-item-${course.id}">
+
+                 <h4>${course.name}</h4> 
+                
+                <h4>${course.dateTime}</h4>
+                <button onclick="handleDeleteCourse(${course.id})"><i class="fa-sharp fa-solid fa-trash"></i></button>
+                
+
+                    
+
+                </li>
+                `
+            });
+            listCoursesBlock.innerHTML = htmls.join('')
+
+
+
+        }
+        getCourses(renderCourses)
+
+
+
+
+        document.getElementById('create').onclick = start;
+
+
+
+
+
+
+
+        /////////////////
+
+
+    </script>
+
+</body>
+
+</html>
